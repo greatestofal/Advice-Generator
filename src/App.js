@@ -43,9 +43,9 @@ function App() {
         <div className="container">
           <div>
             <h1># {advice.id}</h1>
-            <h1> {advice.advice}</h1>
+            <h1> " {advice.advice} "</h1>
           </div>
-          <div>
+          <div className="hrs">
             <img src={image} alt="" />
           </div>
           <div className="button">

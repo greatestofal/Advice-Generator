@@ -1,12 +1,8 @@
 body {
-  width: 100%;
   min-height: 100vh;
   background-color: #202632;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
-  font-family: "Manrope", sans-serif; /* Corrected font URL syntax */
+  font-family: "Manrope", sans-serif;
   font-weight: 800;
 }
 
@@ -14,14 +10,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-
 .container {
   background-color: #313a49;
-  min-width: 50%;
+  min-width: 300px;
   max-width: 90%;
-  height: 350px;
+  height: 300px;
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -31,6 +31,10 @@ body {
   position: relative;
 }
 
+.hrs {
+  margin-bottom: 50px;
+}
+
 .button {
   width: 50px;
   height: 50px;
@@ -38,7 +42,20 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 20px hsl(193, 38%, 86%);
   position: absolute;
-  bottom: -40px;
+  bottom: initial;
+  display: flex;
+  justify-content: center;
+  top: 100%;
+  transform: translateY(-40%);
+}
+
+.button button {
+  background: url(icon-dice.svg) no-repeat center center;
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 p {
@@ -50,6 +67,7 @@ h1 {
   color: white;
   font-size: 28px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 480px) {
