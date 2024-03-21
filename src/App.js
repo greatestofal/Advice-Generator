@@ -4,18 +4,28 @@ import image from "./patterndividerdesktop.svg";
 import axios from "axios";
 
 function App() {
-  const [advice, setAdvise] = useState("");
+  const [advice, setAdvise] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(function () {
     handleClick();
   }, []);
 
-  function handleClick() {
-    async function fetchData() {
+  async function fetchData() {
+    try {
+      setLoading(true);
       const response = await axios.get("https://api.adviceslip.com/advice");
+      setLoading(false);
       const result = response.data.slip;
       setAdvise(() => result);
+    } catch (error) {
+      setLoading(false);
+      setAdvise({ id: "--", advice: "Oops... Something went wrong" });
+      console.log(`Error: ${error}`);
     }
+  }
+
+  function handleClick() {
     fetchData();
   }
 
@@ -25,7 +35,7 @@ function App() {
         <div className="container">
           <div>
             <h1># {advice.id}</h1>
-            <h1> " {advice.advice} "</h1>
+            <h1> {loading ? "Loading..." : `"${advice.advice}"`}</h1>
           </div>
           <div className="hrs">
             <img src={image} alt="" />
